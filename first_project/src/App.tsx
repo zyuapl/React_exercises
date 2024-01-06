@@ -1,7 +1,8 @@
 
 import { useState } from "react"
-import User from "./User"
-import Form from "./Form";
+import User from "./User/User"
+import Form from "./Form/Form"
+import "./index.scss";
 
 let id = 10;
 
@@ -18,15 +19,34 @@ export default function App() {
     setUsers([...users, newUserWithID]);
   }
 
-  return <>
+  return (
+  <div className="main">
+    <div className="add_form">
     <Form addUser={addUser}/>
-    <div>Lista</div>
+    </div>
+    <div className="table">
+      <section className="table_header">
+    <h1>Lista</h1>
+    </section>
+    <section className="table_body">
+      <table>
+        <thead>
+      <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Wiek</th>
+      </tr>
+      </thead>
+      </table>
+    </section>
+    <section className="user">
     {users.map((user) => (
-      <div key={user.id}>
         <User
+          key={user.id}
           user = {user}
           />
-      </div>
     ))}
-  </>
+    </section>
+    </div>
+  </div>)
 }
