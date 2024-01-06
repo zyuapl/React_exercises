@@ -9,8 +9,8 @@ export default function App() {
 
   const [users, setUsers] = useState<IUserWithID[]>([
     {firstName: "Jan", lastName: "Kowalski", age: 100, id: 1},
-    {firstName: "", lastName: "", age: 100, id: 2},
-    {firstName: "Kok", lastName: "Kofev", age: 100, id: 3},
+    {firstName: "Koko", lastName: "Joko", age: 100, id: 2},
+    {firstName: "Lokaj", lastName: "Kofev", age: 100, id: 3},
   ]);
 
   function addUser(newUser: IUser) {
