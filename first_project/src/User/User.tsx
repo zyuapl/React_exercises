@@ -1,10 +1,15 @@
+import { useState } from "react";
 import "./user.scss";
+import UserDetails from "./UserDetails";
 
 interface IProps {
     user: IUser;
+    isOpen: boolean;
+    onClick: () => void;
+    deleteUser: () => void;
 }
 
-export default function User({user}: IProps):React.ReactElement {
+export default function User({user, isOpen, onClick, deleteUser}: IProps):React.ReactElement {
     
     const {firstName, lastName, age} = user;
 
@@ -12,17 +17,13 @@ export default function User({user}: IProps):React.ReactElement {
         return <>Brak danych</>
     }
 
-    return (<>
+    return (
     <div className="user_table">
-        <table>
-            <tbody>
-                <tr>
-                    <td>{firstName}</td>
-                    <td>{lastName}</td>
-                    <td>{age}</td>
-                </tr>
-            </tbody>
-        </table>
+        <section className="name_sec" onClick={onClick}>
+        <span className="name">{firstName}</span>
+        <span className="name">{lastName}</span> 
+        </section>    
+        {isOpen && <UserDetails age = {age} deleteUser={deleteUser}/>}
     </div>
-    </>);
+    );
 }

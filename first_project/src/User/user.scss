@@ -1,9 +1,40 @@
 
 .user_table {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
-td {
-    width: 33%;
-    text-align: center;
+
+.name_sec {
+    width: 100%;
+    display: flex;
+}
+.name {
     border: 1px solid black;
+    width: 50%;
+    text-align: center;
+}
+
+.user_det {
+    display: flex;
+    justify-content: center;
+    border: 1px solid salmon;
+}
+
+.table {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.table_body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.user {
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
