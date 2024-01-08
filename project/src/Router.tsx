@@ -1,36 +1,35 @@
 import {
     RouterProvider,
     createBrowserRouter,
-    Link,
-    Outlet
 } from "react-router-dom";
 
 import "./index.scss";
 import Home from "./Home";
+import UserList from "./User/UserList";
+import Form from "./Form/Form";
+import { UserContextProvider } from "./UserContext";
+import axios from "axios";
 import App from "./App";
+
+
+axios('http://localhost:8000/users')
+.then((response) => {
+    console.log(response.data);
+}).catch(err => console.error(err));
 
 export default function Router() {
     return <RouterProvider router={router} />;
 }
 
-function Nav() {
-    return (
-        <>
-        <div className="nav">
-            <ul>
-                    <Link to="/"><li>Home</li></Link>
-                    <Link to="/users"><li>Users</li></Link>
-            </ul>
-        </div>
-        <Outlet />
-        </>
-    )
-}
+
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Nav />,
+        element: 
+        <UserContextProvider>
+        <App />
+        </UserContextProvider>,
         children: [
             {
                 index: true,
@@ -38,7 +37,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "users",
-                element: <App />
+                element: <UserList />
+            },
+            {
+                path: "add",
+                element: <Form />
             }
         ]
     }

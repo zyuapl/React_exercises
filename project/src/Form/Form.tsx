@@ -1,11 +1,13 @@
 import {useRef, useState} from "react";
 import "./form.scss";
+import useUserContext from "../UserContext";
+import { useNavigate } from "react-router-dom";
 
-interface IProps {
-    addUser: (user: IUser) => void;
-}
-
-export default function Form({addUser}: IProps):React.ReactElement {
+export default function Form():React.ReactElement {
+    
+    const {addUser} = useUserContext();
+    const navigate = useNavigate();
+    
     const [user, setUser] = useState<IUser>({
         firstName: "",
         lastName: "",
@@ -24,6 +26,7 @@ export default function Form({addUser}: IProps):React.ReactElement {
         setUser({firstName:"",lastName:"", age: undefined});
         formRef.current?.reset();
         formRef.current?.firstName.focus();
+        navigate("/users");
     }
 
     return(
