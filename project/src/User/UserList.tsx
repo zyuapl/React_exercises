@@ -3,6 +3,7 @@ import "./user.scss";
 import {useCollapse} from "../hooks/useCollapse";
 import { useFilter } from "../hooks/useFilter";
 import useUserContext from "../UserContext";
+import { Outlet } from "react-router-dom";
 
 export default function UserList(): React.ReactElement {
     
@@ -44,6 +45,9 @@ export default function UserList(): React.ReactElement {
                 />
                 ))}
             </section>
+            <div>
+                <Outlet />
+            </div>
     </div>
     )
 }

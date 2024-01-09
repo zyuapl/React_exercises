@@ -1,21 +1,28 @@
 {
     "users": [
-        {
-            "id":1, 
-            "firstName": "Jan", 
-            "lastName": "Kowalski", 
-            "age": 100
-        },
-        {
-            "id":2, 
-            "firstName": "Jan", 
-            "lastName": "Kowalski", 
-            "age": 100
-        },{
-            "id":3, 
-            "firstName": "Jan", 
-            "lastName": "Kowalski", 
-            "age": 100
-        }
+      {
+        "id": "1",
+        "firstName": "Jan",
+        "lastName": "Kowalski",
+        "age": 100
+      },
+      {
+        "id": "2",
+        "firstName": "Jan",
+        "lastName": "Kowal",
+        "age": 100
+      },
+      {
+        "id": "3",
+        "firstName": "Michal",
+        "lastName": "Kowalski",
+        "age": 100
+      },
+      {
+        "id": "4",
+        "firstName": "Kokosz",
+        "lastName": "Hohol",
+        "age": "29"
+      }
     ]
-    }
+  }

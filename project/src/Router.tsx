@@ -10,6 +10,7 @@ import Form from "./Form/Form";
 import { UserContextProvider } from "./UserContext";
 import axios from "axios";
 import App from "./App";
+import SingleUser from "./User/SingleUser";
 
 
 axios('http://localhost:8000/users')
@@ -37,7 +38,13 @@ const router = createBrowserRouter([
             },
             {
                 path: "users",
-                element: <UserList />
+                element: <UserList />,
+                children: [
+                    {
+                        path: ":id",
+                        element: <SingleUser />,
+                    },
+                ],
             },
             {
                 path: "add",

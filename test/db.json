@@ -1,0 +1,18 @@
+{
+    "product": [
+      {
+        "id": 1,
+        "firstName": "Krish",
+        "lastName": "Lee",
+        "phoneNumber": "123456",
+        "emailAddress": "krish.lee@learningcontainer.com"
+      },
+      {
+        "id": 2,
+        "firstName": "jone",
+        "lastName": "mac",
+        "phoneNumber": "111111111",
+        "emailAddress": "jone.mac@learningcontainer.com"
+      }
+    ]
+  }

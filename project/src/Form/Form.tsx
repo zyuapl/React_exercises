@@ -20,9 +20,9 @@ export default function Form():React.ReactElement {
         setUser({...user, [e.target.name]: e.target.value});
     }
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        addUser(user);
+        await addUser(user);
         setUser({firstName:"",lastName:"", age: undefined});
         formRef.current?.reset();
         formRef.current?.firstName.focus();

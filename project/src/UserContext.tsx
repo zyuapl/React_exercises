@@ -1,11 +1,8 @@
-import React, { PropsWithChildren, createContext, useContext, useReducer } from "react";
+import React, { PropsWithChildren, createContext, useContext, useEffect, useReducer } from "react";
 import userReducer from "./userReducer";
+import api from "./api";
 
-const initialState = [
-    {firstName: "Jan", lastName: "Kowalski", age: 100, id: 1},
-    {firstName: "Koko", lastName: "Joko", age: 100, id: 2},
-    {firstName: "Lokaj", lastName: "Kofev", age: 100, id: 3},
-];
+const initialState: IUserWithID[] = [];
 
 const UserContext = createContext<{
 users: IUserWithID[];
@@ -17,13 +14,36 @@ export function UserContextProvider({children}:PropsWithChildren): React.ReactEl
 
     const [state, dispatch] = useReducer(userReducer, initialState);
 
-    function addUser(newUser:IUser) {
-        dispatch({type: "ADD_USER", payload: newUser});
+    async function getUsers() {
+      try {
+        const response = await api<IUserWithID[]>("/users");
+        dispatch({type: "SET_USERS", payload: response.data});
+      } catch(error) {
+        console.error(error);
       }
-    
-      function deleteUser(id: number) {
+    }
+
+    async function addUser(newUser: IUser) {
+      try {
+        const response = await api.post("/users", newUser);
+        dispatch({type: "ADD_USER", payload: response.data});
+      } catch(error) {
+        console.error(error);
+      }
+    }
+
+    async function deleteUser(id: number) {
+      try {
+        await api.delete(`/users/${id}`);
         dispatch({type: "DELETE_USER", payload: {id}});
+      } catch(error) {
+        console.error(error);
       }
+    }
+
+    useEffect(() => {
+      getUsers();
+    }, []);
 
       return (
         <UserContext.Provider value={{users: state, addUser, deleteUser}}>
